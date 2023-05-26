@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sopa de letras</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-        <!-- Dependencias -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+    <!-- Dependencias -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="wordfind.js"></script>
     <script src="wordfindgame.js"></script>
-</head>
+  </head>
 
-<body>
-	<!-- Estructura de la sopa de letras-->
-	
-	<div class="container">
-	<table width="1000" border="0">
-  <tbody>
-    <tr>
-      <td width="300"><img src="img/IZZI.webp" alt=""/></td>
-	  <td width="50">&nbsp;</td>
-      <td width="300"><img src="img/Inizziativa.webp" alt=""/></td>
-	  <td width="50">&nbsp;</td>
-      <td width="300"><img src="img/Innovación Conectada.webp" alt=""/></td>
-    </tr>
-  </tbody>
-</table>
+  <body>
+    <!-- Estructura de la sopa de letras-->
 
-			
-	</div>
-	<div id="instrucciones">
+    <div class="container">
+      <table width="1000" border="0">
+        <tbody>
+          <tr>
+            <td width="300"><img src="img/IZZI.webp" alt="" /></td>
+            <td width="50">&nbsp;</td>
+            <td width="300"><img src="img/Inizziativa.webp" alt="" /></td>
+            <td width="50">&nbsp;</td>
+            <td width="300">
+              <img src="img/Innovación Conectada.webp" alt="" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="instrucciones">
       <ol>
         <li>INSTRUCCIONES:</li>
-		<li>Busca las palabras mostradas.</li>
+        <li>Busca las palabras mostradas.</li>
         <li>Elige la primera letra y arrastra hasta la última para marcar.</li>
         <li>Suelta para marcar la palabra.</li>
         <li>Repite para todas las palabras.</li>
         <li>¡Encuentra todas las palabras en la sopa de letras!</li>
-		<div id="cronometro"></div>
+        <div id="cronometro"></div>
       </ol>
-	</div>
-	<input type="button" id="BTNresolver" value="Resolver sopa de letras" />
-    <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh">
-	<div id="contenedor"></div>
+    </div>
+    <input type="button" id="BTNresolver" value="Resolver sopa de letras" />
+    <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" />
+    <div id="contenedor"></div>
     <div id="palabras-sopadeletras"></div>
-	
-	
-	
+
     <!-- Construcción de la sopa de letras -->
-<script>
-        // Array con las palabras que el usuario debe buscar
-        var palabras = ['Innovación', 'Monitoreo', 'Información', 'Aprendizaje', 'Clientes', 'Tecnología', 'Efectividad', 'Negación', 'Trabajo', 'Proyecto', 'Ideas', 'Cambio', 'Reto', 'Incidencias', 'FTTH', 'Automatización'
-        ];
+    <script>
+      // Array con las palabras que el usuario debe buscar
+      var palabras = [
+        "Innovación",
+        "Monitoreo",
+        "Información",
+        "Aprendizaje",
+        "Clientes",
+        "Tecnología",
+        "Efectividad",
+        "Negación",
+        "Trabajo",
+        "Proyecto",
+        "Ideas",
+        "Cambio",
+        "Reto",
+        "Incidencias",
+        "FTTH",
+        "Automatización",
+      ];
 
-        // Comienza un juego de palabras
-        var sopaLetras = wordfindgame.create(palabras, '#contenedor', '#palabras-sopadeletras');
+      // Comienza un juego de palabras
+      var sopaLetras = wordfindgame.create(
+        palabras,
+        "#contenedor",
+        "#palabras-sopadeletras"
+      );
 
-        // Función para resolver la sopa de letras             
-        $("#BTNresolver").click(function () {
-            var resultado = wordfindgame.solve(sopaLetras, palabras);
-            console.log(resultado);
-        });
+      // Función para resolver la sopa de letras
+      $("#BTNresolver").click(function () {
+        var resultado = wordfindgame.solve(sopaLetras, palabras);
+        console.log(resultado);
+      });
 
-        // Función para reiniciar la sopa de letras
-        $("#BTNrefresh").click(function () {
-            window.location.href = window.location.href;
-        });
+      // Función para reiniciar la sopa de letras
+      $("#BTNrefresh").click(function () {
+        window.location.href = window.location.href;
+      });
     </script>
-	
-	
-</body>
-
+  </body>
 </html>
