@@ -1,0 +1,213 @@
+body {
+    background-color: #d41073;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+}
+
+/* Contenedor de la sopa de letras */
+
+#contenedor {
+    border: 3px solid rgb(255, 255, 255);
+    padding: 20px;
+    float: left;
+    margin: 150px 20px;
+}
+
+#contenedor div {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Estilo para cada cuadrado de la sopa de letras */
+
+#contenedor .letra {
+    height: 30px;
+    width: 30px;
+    text-transform: uppercase;
+    background-color: white;
+    border: 0;
+    font: 1em "lato";
+}
+
+/* Colores cuando se selecciona un cuadrado */
+
+#contenedor .selected {
+    background-color: rgb(0, 177, 173);
+}
+
+#contenedor:hover .selected:hover {
+    background-color: rgb(0, 177, 173);
+    font-weight: bold;
+}
+
+#contenedor>div>button:hover {
+    background-color: rgb(244, 127, 35);
+    font-weight: bold;
+}
+
+/* Indica que la letra es parte de una palabra que se ha encontrado */
+
+#contenedor .found {
+    background-color: #d41073;
+    color: white;
+    border: 1px solid black;
+    font-weight: bold;
+    text-shadow: 0px 2px 3px #000;
+}
+
+#contenedor .found:hover {
+    background-color: rgb(0, 177, 173);
+    font-weight: bold;
+}
+
+/* Colores de palabras no encontradas cuando se pulsa el botón Resolver sopa de letras*/
+
+#contenedor .solved {
+    background-color: purple;
+    color: white;
+}
+
+/* Cambio de color de fondo cuando se encuentras todas las palabras*/
+
+#contenedor .complete {
+    background-color: #00b1ad;
+}
+
+/**
+* Estilos para la lista de palabras
+*/
+
+#palabras-sopadeletras {
+    padding-top: 20px;
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+    width: 300px;
+}
+
+#palabras-sopadeletras ul {
+    list-style-type: none;
+}
+
+#palabras-sopadeletras li {
+    padding: 3px 0;
+    font: 1em "lato";
+}
+
+/*Indica que la palabra ha sido encontrada en la lista */
+
+#palabras-sopadeletras .palabraEncontrada {
+    text-decoration: line-through;
+    color: rgb(0, 0, 0);
+}
+
+/**
+*  Estilos para el botón
+*/
+
+#BTNrefresh {
+    bottom: 0em;
+    position: absolute;
+	display: inline-block;
+	padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #00b1ad;
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+#BTNrefresh:hover {background-color: #f47f23}
+
+#BTNrefresh:active {
+  background-color: #f47f23;
+  transform: translateY(4px);
+}
+
+#BTNresolver {
+    bottom: 3em;
+    position: absolute;
+	display: inline-block;
+	padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #00b1ad;
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+#BTNresolver:hover {background-color: #f47f23}
+
+#BTNresolver:active {
+  background-color: #f47f23;
+  transform: translateY(4px);
+}
+
+
+/* Título */
+
+.titulo {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    font: normal 48px/normal "lato", Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: normal;
+    text-align: center;
+    top: 1em;
+}
+
+.container {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    text-decoration: normal;
+    text-align: center;
+    position: absolute;
+    top: 1em;
+}
+
+#cronometro {
+    font-family: 'Lato', sans-serif;
+	display: inline-grid;
+	padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #00b1ad;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+#instrucciones {
+    display: inline-block;
+	border: none;
+    font-family: 'Lato', sans-serif;
+	font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    text-align: left;
