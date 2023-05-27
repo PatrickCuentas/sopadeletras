@@ -11,38 +11,38 @@
 var cronometroInterval;
 var tiempo = 0;
 var cronometroActivo = false;
-var numeroColaborador = undefined;
+var numeroColaborador = "";
 
 // Función para iniciar el cronómetro
-function iniciarCronometro() {
-  cronometroInterval = setInterval(function() {
-    tiempo++;
-    document.getElementById("cronometro").textContent = "Tiempo: " + tiempo + " segundos";
-  }, 1000);
-  cronometroActivo = false;
-}
+// function iniciarCronometro() {
+//   cronometroInterval = setInterval(function() {
+//     tiempo++;
+//     document.getElementById("cronometro").textContent = "Tiempo: " + tiempo + " segundos";
+//   }, 1000);
+//   cronometroActivo = false;
+// }
 
 // Función para detener el cronómetro
-function detenerCronometro() {
-  clearInterval(cronometroInterval);
-  cronometroActivo = true;
-}
+// function detenerCronometro() {
+//   clearInterval(cronometroInterval);
+//   cronometroActivo = true;
+// }
 
 // Función para resolver el juego
-function complete() {
-  // ...
-  // Resto del código para resolver el juego
-  // ...
-  detenerCronometro();
-  alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");
-}
+// function complete() {
+//   // ...
+//   // Resto del código para resolver el juego
+//   // ...
+//   detenerCronometro();
+//   alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");
+// }
 
 // Ejemplo de función relacionada con el juego que verifica si el cronómetro está activo
-function hacerAlgo() {
-  if (cronometroActivo) {
-    // Código para realizar la acción
-  }
-}
+// function hacerAlgo() {
+//   if (cronometroActivo) {
+//     // Código para realizar la acción
+//   }
+// }
 
 // Ejemplo de cómo llamar a la función para iniciar el cronómetro cuando el juego comienza
 // iniciarCronometro();
