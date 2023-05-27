@@ -118,7 +118,6 @@
       <div class="flex gap-2 justify-center items-center">
         <div id="contenedor"></div>
         <div class="flex flex-col gap-2 justify-center items-center">
-          <button id="end" class="bg-black p-2">COMPLETAR SOPA</button>
           <div id="cronometro">Tiempo: 0 segundos</div>
           <div id="palabras-sopadeletras"></div>
         </div>
@@ -162,15 +161,15 @@
       );
 
       // Función para resolver la sopa de letras
-      $("#BTNresolver").click(function () {
-        var resultado = wordfindgame.solve(sopaLetras, palabras);
-        console.log(resultado);
-      });
+      // document.getElementById("#BTNresolver").addEventListener("click", () => {
+      //   var resultado = wordfindgame.solve(sopaLetras, palabras);
+      //   console.log(resultado);
+      // });
 
       // Función para reiniciar la sopa de letras
-      $("#BTNrefresh").click(function () {
-        window.location.href = window.location.href;
-      });
+      // $("#BTNrefresh").click(function () {
+      //   window.location.href = window.location.href;
+      // });
     </script>
   </body>
 </html>

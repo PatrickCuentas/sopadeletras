@@ -53,7 +53,6 @@ function complete() {
   const Tiempo = formatTime(tiempo);
   const body = { Juego, Colaborador, Tiempo };
   makeRequest(body);
-
   detenerCronometro();
   alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");
 }
@@ -63,7 +62,6 @@ function manejarModales() {
   const modal2 = document.getElementById("modal2");
   const closeModal1 = document.getElementById("closeModal1");
   const closeModal2 = document.getElementById("closeModal2");
-  const btnEnd = document.getElementById("end");
 
   closeModal1.addEventListener("click", function () {
     modal1.classList.add("hidden");
@@ -81,11 +79,24 @@ function manejarModales() {
     modal2.classList.add("hidden");
     iniciarCronometro();
   });
-
-  btnEnd.addEventListener("click", complete);
 }
 
 function init() {
+  var items = document
+    .getElementById("palabras-sopadeletras")
+    .getElementsByTagName("ul")[0]
+    .getElementsByTagName("li");
+
+  var timer = setInterval(() => {
+    var checkedItems = [...items].filter((item) =>
+      item.classList.contains("palabraEncontrada")
+    );
+    if (checkedItems.length === items.length) {
+      complete();
+      clearInterval(timer);
+    }
+  }, 1000);
+
   // Manejo de modales
   manejarModales();
 }
