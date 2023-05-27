@@ -12,10 +12,42 @@ function detenerCronometro() {
   cronometroActivo = true;
 }
 
+function makeRequest(body) {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify(body);
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("/new", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+}
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedSeconds =
+    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+  return `${minutes}:${formattedSeconds} min`;
+}
+
 function complete() {
   // ...
   // Resto del código para resolver el juego
   // ...
+  const Juego = "Sopa de letras";
+  const Colaborador = numeroColaborador;
+  const Tiempo = formatTime(tiempo);
+  const body = { Juego, Colaborador, Tiempo };
+  makeRequest(body);
 
   detenerCronometro();
   alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");

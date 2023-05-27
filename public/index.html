@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sopa de letras</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
     <!-- Dependencias -->
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./wordfind.js"></script>
-    <script src="./wordfindgame.js"></script>
+    <script src="./js/wordfind.js"></script>
+    <script src="./js/wordfindgame.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -111,9 +111,9 @@
     <!-- Estructura de la sopa de letras-->
     <div class="flex flex-col pt-16 pb-8">
       <div class="flex gap-8">
-        <img src="img/IZZI.webp" alt="" />
-        <img src="img/Inizziativa.webp" alt="" />
-        <img src="img/Innovación Conectada.webp" alt="" />
+        <img src="../img/IZZI.webp" alt="" />
+        <img src="../img/Inizziativa.webp" alt="" />
+        <img src="../img/Innovación Conectada.webp" alt="" />
       </div>
       <div class="flex gap-2 justify-center items-center">
         <div id="contenedor"></div>
@@ -129,7 +129,8 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="./main.js"></script>
+    <!-- IMPORT MAIN.JS TO USE REQUIRE -->
+    <script type="module" src="./js/main.js"></script>
 
     <!-- Construcción de la sopa de letras -->
     <script>

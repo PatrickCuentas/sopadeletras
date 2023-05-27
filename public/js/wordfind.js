@@ -33,7 +33,6 @@ function complete() {
   // ...
   // Resto del código para resolver el juego
   // ...
-  
   detenerCronometro();
   alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");
 }
