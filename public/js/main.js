@@ -1,3 +1,8 @@
+var cronometroInterval;
+var tiempo = 0;
+var cronometroActivo = false;
+var numeroColaborador = "";
+
 function iniciarCronometro() {
   cronometroInterval = setInterval(function () {
     tiempo++;
