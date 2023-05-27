@@ -108,29 +108,23 @@
     <!-- Fin Modal2 -->
 
     <!-- Estructura de la sopa de letras-->
-
-    <div class="container">
-      <table width="1000" border="0">
-        <tbody>
-          <tr>
-            <td width="300"><img src="img/IZZI.webp" alt="" /></td>
-            <td width="50">&nbsp;</td>
-            <td width="300"><img src="img/Inizziativa.webp" alt="" /></td>
-            <td width="50">&nbsp;</td>
-            <td width="300">
-              <img src="img/Innovación Conectada.webp" alt="" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="flex flex-col">
+      <div class="flex gap-8">
+        <img src="img/IZZI.webp" alt="" />
+        <img src="img/Inizziativa.webp" alt="" />
+        <img src="img/Innovación Conectada.webp" alt="" />
+      </div>
+      <div class="flex gap-2 justify-center items-center">
+        <div id="contenedor"></div>
+        <div class="flex flex-col gap-2 justify-center items-center">
+          <div id="cronometro"></div>
+          <div id="palabras-sopadeletras"></div>
+        </div>
+      </div>
+      <h4 class="text-2xl font-bold">
+        ¡ENCUENTRA TODAS LAS PALABRAS EN LA SOPA DE LETRAS!
+      </h4>
     </div>
-    <div id="cronometro"></div>
-    <h4 class="absolute bottom-[200px] text-2xl font-bold">
-      ¡ENCUENTRA TODAS LAS PALABRAS EN LA SOPA DE LETRAS!
-    </h4>
-    <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" />
-    <div id="contenedor"></div>
-    <div id="palabras-sopadeletras"></div>
 
     <!-- SCRIPTS -->
     <script src="./main.js"></script>
