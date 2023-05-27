@@ -13,9 +13,104 @@
     ></script>
     <script src="wordfind.js"></script>
     <script src="wordfindgame.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
+    <!-- Modal1 -->
+    <div
+      id="modal1"
+      class="modal fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
+
+      <div
+        class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7] p-4 flex justify-center">
+          <h2 class="text-2xl text-black text-center max-w-[20ch]">
+            !Bienvenido a la sopa de letras!
+          </h2>
+        </div>
+
+        <!-- Body -->
+        <div class="bg-[#ffffff] p-4 border-y-2 border-[#cacaca]">
+          <p class="text-black">
+            Resuelve este juego de sopa de letra en el menor tiempo posible.
+          </p>
+          <h3 class="text-black text-lg font-bold">Instrucciones:</h3>
+          <ul class="list-disc px-4">
+            <li class="text-black">Busca las palabras mostradas.</li>
+            <li class="text-black">
+              Elige la primera letra y arrastra hasta la última para marcar.
+            </li>
+            <li class="text-black">Suelta para marcar la palabra.</li>
+            <li class="text-black">Repite para todas las palabras.</li>
+            <li class="text-black">
+              ¡Encuentra todas las palabras en la sopa de letras!
+            </li>
+          </ul>
+
+          <h3 class="mt-4 text-black text-lg font-bold">!Exitos!</h3>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-[#f7f7f7] py-4 flex justify-center">
+          <button
+            id="closeModal1"
+            class="bg-[#28b7b5] text-lg p-3 rounded-[14px]"
+          >
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal1 -->
+
+    <!-- Modal2 -->
+    <div
+      id="modal2"
+      class="modal hidden fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
+
+      <div
+        class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7] p-8">
+          <h2 class="text-2xl text-black">Ingresa tus datos</h2>
+        </div>
+
+        <!-- Body -->
+        <div class="bg-[#ffffff] p-8 border-y-2 border-[#cacaca]">
+          <div class="flex flex-col gap-2">
+            <label class="text-black text-lg"># de Colaborador</label>
+            <input
+              type="text"
+              class="border w-full rounded py-2 px-3 outline-none focus:ring focus:border-blue-300 placeholder-gray-400 text-gray-700 bg-white shadow-sm focus:shadow-outline-blue appearance-none"
+            />
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-[#f7f7f7] py-4 flex justify-center">
+          <button
+            id="closeModal2"
+            class="bg-[#d41073] text-lg p-3 rounded-[14px] min-w-[150px]"
+          >
+            Ingresar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal2 -->
+
     <!-- Estructura de la sopa de letras-->
 
     <div class="container">
@@ -48,6 +143,9 @@
     <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" />
     <div id="contenedor"></div>
     <div id="palabras-sopadeletras"></div>
+
+    <!-- SCRIPTS -->
+    <script src="./main.js"></script>
 
     <!-- Construcción de la sopa de letras -->
     <script>
