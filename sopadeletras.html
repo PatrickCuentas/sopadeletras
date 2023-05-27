@@ -11,8 +11,8 @@
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="wordfind.js"></script>
-    <script src="wordfindgame.js"></script>
+    <script src="./wordfind.js"></script>
+    <script src="./wordfindgame.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -85,13 +85,14 @@
 
         <!-- Body -->
         <div class="bg-[#ffffff] p-8 border-y-2 border-[#cacaca]">
-          <div class="flex flex-col gap-2">
+          <form class="flex flex-col gap-2">
             <label class="text-black text-lg"># de Colaborador</label>
             <input
               type="text"
+              id="numeroColaborador"
               class="border w-full rounded py-2 px-3 outline-none focus:ring focus:border-blue-300 placeholder-gray-400 text-gray-700 bg-white shadow-sm focus:shadow-outline-blue appearance-none"
             />
-          </div>
+          </form>
         </div>
 
         <!-- Footer -->
@@ -108,7 +109,7 @@
     <!-- Fin Modal2 -->
 
     <!-- Estructura de la sopa de letras-->
-    <div class="flex flex-col">
+    <div class="flex flex-col pt-16 pb-8">
       <div class="flex gap-8">
         <img src="img/IZZI.webp" alt="" />
         <img src="img/Inizziativa.webp" alt="" />
@@ -117,7 +118,8 @@
       <div class="flex gap-2 justify-center items-center">
         <div id="contenedor"></div>
         <div class="flex flex-col gap-2 justify-center items-center">
-          <div id="cronometro"></div>
+          <button id="end" class="bg-black p-2">COMPLETAR SOPA</button>
+          <div id="cronometro">Tiempo: 0 segundos</div>
           <div id="palabras-sopadeletras"></div>
         </div>
       </div>

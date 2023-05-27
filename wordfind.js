@@ -11,6 +11,7 @@
 var cronometroInterval;
 var tiempo = 0;
 var cronometroActivo = false;
+var numeroColaborador = undefined;
 
 // Función para iniciar el cronómetro
 function iniciarCronometro() {
@@ -22,7 +23,7 @@ function iniciarCronometro() {
 }
 
 // Función para detener el cronómetro
-function complete() {
+function detenerCronometro() {
   clearInterval(cronometroInterval);
   cronometroActivo = true;
 }
@@ -45,4 +46,4 @@ function hacerAlgo() {
 }
 
 // Ejemplo de cómo llamar a la función para iniciar el cronómetro cuando el juego comienza
-iniciarCronometro();
+// iniciarCronometro();
