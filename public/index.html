@@ -104,7 +104,7 @@
               ># de Colaborador</label
             >
             <input
-              type="text"
+              type="number"
               id="numeroColaborador"
               class="border w-full rounded py-2 px-3 outline-none focus:ring focus:border-blue-300 placeholder-gray-400 text-gray-700 bg-white shadow-sm focus:shadow-outline-blue appearance-none"
             />
@@ -152,24 +152,26 @@
     <!-- Fin Modal3 -->
 
     <!-- Modal4 -->
-        <div
-        class="modal hidden fixed inset-0 flex items-center justify-center z-50"
-        id="modal4"
+    <div
+      class="modal hidden fixed inset-0 flex items-center justify-center z-50"
+      id="modal4"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
+
+      <div
+        class="modal-container rounded-[5px] bg-white w-6/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
       >
-        <div
-          class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
-        ></div>
-  
-        <div
-          class="modal-container rounded-[5px] bg-white w-6/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
-        >
-          <!-- Header -->
-          <div class="bg-[#f7f7f7]text-black p-8 border-y-2 border-[#cacaca]">
-            <h2  class="text-md md:text-lg lg:text-xl text-black" id="titulo-modal4">
-            </h2>
-          </div>
-  
-           <!-- Footer -->
+        <!-- Header -->
+        <div class="bg-[#f7f7f7]text-black p-8 border-y-2 border-[#cacaca]">
+          <h2
+            class="text-md md:text-lg lg:text-xl text-black"
+            id="titulo-modal4"
+          ></h2>
+        </div>
+
+        <!-- Footer -->
         <div class="bg-[#f7f7f7] py-4 flex justify-center">
           <button
             id="closeModal4"
@@ -178,10 +180,9 @@
             OK
           </button>
         </div>
-          
-        </div>
       </div>
-      <!-- Fin Modal4 -->
+    </div>
+    <!-- Fin Modal4 -->
 
     <!-- Estructura de la sopa de letras-->
     <div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4 md:pb-6">

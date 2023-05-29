@@ -76,7 +76,8 @@ function manejarModales() {
 
   closeModal2.addEventListener("click", function () {
     const numeroColaboradorInput = document.getElementById("numeroColaborador");
-    if (!numeroColaboradorInput.value) {
+
+    if (!numeroColaboradorInput.value || isNaN(numeroColaboradorInput.value)) {
       modal4.classList.toggle("hidden");
       tituloModal4.textContent = "Ingrese un número de colaborador";
       numeroColaboradorInput.focus();
