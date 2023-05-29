@@ -10,9 +10,6 @@ body {
 
 #contenedor {
     border: 3px solid rgb(255, 255, 255);
-    padding: 20px;
-    float: left;
-    margin: 80px 20px;
 }
 
 #contenedor div {
@@ -23,8 +20,6 @@ body {
 /* Estilo para cada cuadrado de la sopa de letras */
 
 #contenedor .letra {
-    height: 30px;
-    width: 30px;
     text-transform: uppercase;
     background-color: white;
     color:rgb(0, 0, 0);
@@ -98,6 +93,19 @@ body {
 #palabras-sopadeletras li {
     padding: 3px 0;
     font: 1em "lato";
+    font-size: 20px;
+}
+
+@media (max-width: 767px) {
+    #palabras-sopadeletras li {
+      font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #palabras-sopadeletras li {
+      font-size: 16px;
+    }
 }
 
 /*Indica que la palabra ha sido encontrada en la lista */
@@ -211,3 +219,4 @@ body {
 	font-size: 16px;
     color: rgba(255, 255, 255, 1);
     text-align: left;
+}

@@ -31,33 +31,45 @@
       >
         <!-- Header -->
         <div class="bg-[#f7f7f7] p-4 flex justify-center">
-          <h2 class="text-2xl text-black text-center max-w-[20ch]">
+          <h2
+            class="text-md md:text-lg lg:text-2xl text-black text-center lg:max-w-[20ch]"
+          >
             ¡Bienvenido a la sopa de letras!
           </h2>
         </div>
 
         <!-- Body -->
         <div class="bg-[#ffffff] p-4 border-y-2 border-[#cacaca]">
-          <p class="text-black">
+          <p class="text-sm md:text-md lg:text-lg text-black">
             Resuelve este juego de sopa de letra en el menor tiempo posible.
           </p>
-          <h3 class="text-black text-lg font-bold">Instrucciones:</h3>
+          <h3
+            class="text-md md:text-lg lg:text-xl text-black text-lg font-bold"
+          >
+            Instrucciones:
+          </h3>
           <ul class="list-disc px-4">
-            <li class="text-black">Busca las palabras mostradas.</li>
-            <li class="text-black">
+            <li class="text-sm md:text-md lg:text-lg text-black">
+              Busca las palabras mostradas.
+            </li>
+            <li class="text-sm md:text-md lg:text-lg text-black">
               Elige la primera letra y arrastra hasta la última para marcar.
             </li>
-            <li class="text-black">Suelta para marcar la palabra.</li>
+            <li class="text-sm md:text-md lg:text-lg text-black">
+              Suelta para marcar la palabra.
+            </li>
           </ul>
 
-          <h3 class="mt-4 text-black text-lg font-bold">¡Exitos!</h3>
+          <h3 class="mt-4 text-black text-md md:text-lg lg:text-xl font-bold">
+            ¡Exitos!
+          </h3>
         </div>
 
         <!-- Footer -->
         <div class="bg-[#f7f7f7] py-4 flex justify-center">
           <button
             id="closeModal1"
-            class="bg-[#28b7b5] text-lg p-3 rounded-[14px]"
+            class="bg-[#28b7b5] text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px]"
           >
             Continuar
           </button>
@@ -80,13 +92,17 @@
       >
         <!-- Header -->
         <div class="bg-[#f7f7f7] p-8">
-          <h2 class="text-2xl text-black">Ingresa tus datos</h2>
+          <h2 class="text-md md:text-lg lg:text-xl text-black">
+            Ingresa tus datos
+          </h2>
         </div>
 
         <!-- Body -->
         <div class="bg-[#ffffff] p-8 border-y-2 border-[#cacaca]">
           <form class="flex flex-col gap-2">
-            <label class="text-black text-lg"># de Colaborador</label>
+            <label class="text-black text-sm md:text-md lg:text-lg"
+              ># de Colaborador</label
+            >
             <input
               type="text"
               id="numeroColaborador"
@@ -99,7 +115,7 @@
         <div class="bg-[#f7f7f7] py-4 flex justify-center">
           <button
             id="closeModal2"
-            class="bg-[#d41073] text-lg p-3 rounded-[14px] min-w-[150px]"
+            class="bg-[#d41073] text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]"
           >
             Ingresar
           </button>
@@ -109,20 +125,31 @@
     <!-- Fin Modal2 -->
 
     <!-- Estructura de la sopa de letras-->
-    <div class="flex flex-col pt-16 pb-8">
-      <div class="flex gap-8">
-        <img src="../img/IZZI.webp" alt="" />
-        <img src="../img/Inizziativa.webp" alt="" />
-        <img src="../img/Innovación Conectada.webp" alt="" />
+    <div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4 md:pb-6">
+      <div
+        class="flex md:flex-row justify-center items-center gap-2 px-4 md:px-0 lg:gap-4 mb-8 lg:mb-0"
+      >
+        <img src="../img/IZZI.webp" alt="" class="w-[33%] lg:w-full" />
+        <img src="../img/Inizziativa.webp" alt="" class="w-[33%] lg:w-full" />
+        <img
+          src="../img/Innovación Conectada.webp"
+          alt=""
+          class="w-[33%] lg:w-full"
+        />
       </div>
-      <div class="flex gap-2 justify-center items-center">
-        <div id="contenedor"></div>
+      <div class="flex flex-col md:flex-row gap-2 justify-center items-center">
+        <div
+          id="contenedor"
+          class="p-[10px] md:p-[15px] lg:p-[20px] my-[20px] md:my-[80px] mx-[10px] lg:mx-[20px] order-last md:order-first"
+        ></div>
         <div class="flex flex-col gap-2 justify-center items-center">
           <div id="cronometro">Tiempo: 0:0 min</div>
           <div id="palabras-sopadeletras"></div>
         </div>
       </div>
-      <h4 class="text-2xl font-bold">
+      <h4
+        class="text-md md:text-xl lg:text-2xl text-center font-bold p-4 sm:p-0"
+      >
         ¡ENCUENTRA TODAS LAS PALABRAS EN LA SOPA DE LETRAS!
       </h4>
     </div>
