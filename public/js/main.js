@@ -7,7 +7,7 @@ function iniciarCronometro() {
   cronometroInterval = setInterval(function () {
     tiempo++;
     document.getElementById("cronometro").textContent =
-      "Tiempo: " + tiempo + " segundos";
+      "Tiempo: " + formatTime(tiempo);
   }, 1000);
   cronometroActivo = false;
 }
