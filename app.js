@@ -11,6 +11,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+app.get("/colaborador/:id", (req, res) => {
+  const { id } = req.params;
+
+  db.all(`SELECT * FROM sopaletras WHERE Colaborador = ${id}`, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error en la base de datos");
+    }
+    if (rows.length > 0) {
+      res.status(303).json({
+        message: "El colaborador con ese número ya resolvió el juego",
+      });
+    } else {
+      res.status(200).json({
+        message: "ok",
+      });
+    }
+  });
+});
+
 app.post("/new", (req, res) => {
   const { Juego, Colaborador, Tiempo } = req.body;
   db.run(

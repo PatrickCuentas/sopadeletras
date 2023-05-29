@@ -48,20 +48,26 @@ function complete() {
   // ...
   // Resto del código para resolver el juego
   // ...
+  const modal3 = document.getElementById("modal3");
+  const tiempoJuegoModal3 = document.getElementById("tiempo-juego");
   const Juego = "Sopa de letras";
   const Colaborador = numeroColaborador;
   const Tiempo = formatTime(tiempo);
   const body = { Juego, Colaborador, Tiempo };
   makeRequest(body);
   detenerCronometro();
-  alert("¡Felicidades! Has resuelto el juego en " + tiempo + " segundos.");
+  modal3.classList.toggle("hidden");
+  tiempoJuegoModal3.textContent = Tiempo;
 }
 
 function manejarModales() {
   const modal1 = document.getElementById("modal1");
   const modal2 = document.getElementById("modal2");
+  const modal4 = document.getElementById("modal4");
+  const tituloModal4 = document.getElementById("titulo-modal4");
   const closeModal1 = document.getElementById("closeModal1");
   const closeModal2 = document.getElementById("closeModal2");
+  const closeModal4 = document.getElementById("closeModal4");
 
   closeModal1.addEventListener("click", function () {
     modal1.classList.add("hidden");
@@ -71,13 +77,29 @@ function manejarModales() {
   closeModal2.addEventListener("click", function () {
     const numeroColaboradorInput = document.getElementById("numeroColaborador");
     if (!numeroColaboradorInput.value) {
-      alert("Debes ingresar un número de colaborador");
+      modal4.classList.toggle("hidden");
+      tituloModal4.textContent = "Ingrese un número de colaborador";
       numeroColaboradorInput.focus();
       return;
     }
-    numeroColaborador = numeroColaboradorInput.value;
-    modal2.classList.add("hidden");
-    iniciarCronometro();
+
+    fetch(`/colaborador/${numeroColaboradorInput.value}`).then((response) => {
+      if (response.status === 303) {
+        modal4.classList.toggle("hidden");
+        tituloModal4.textContent = `El colaborador #${numeroColaboradorInput.value} ya resolvió el juego`;
+        numeroColaboradorInput.value = "";
+        numeroColaboradorInput.focus();
+        return;
+      } else {
+        numeroColaborador = numeroColaboradorInput.value;
+        modal2.classList.add("hidden");
+        iniciarCronometro();
+      }
+    });
+  });
+
+  closeModal4.addEventListener("click", function () {
+    modal4.classList.toggle("hidden");
   });
 }
 
