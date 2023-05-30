@@ -1,17 +1,16 @@
 html {
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 body {
   background-color: #d41073;
   color: #fff;
   overflow-x: hidden;
-  overflow-y: hidden;
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 /* Contenedor de la sopa de letras */

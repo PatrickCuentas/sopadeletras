@@ -43,6 +43,10 @@
           (o = this),
           s.push(this),
           (i = t(this).text());
+
+        const html = document.querySelector("html");
+        html.style.overflow = "hidden";
+        e.body.style.overflow = "hidden";
       },
       c = function (e) {
         if (o) {
@@ -108,6 +112,10 @@
           (s = []),
           (i = ""),
           (a = null);
+
+        const html = document.querySelector("html");
+        html.style.overflow = "auto";
+        e.body.style.overflow = "auto";
       },
       p = function (e, t, r, o) {
         for (var a in n.orientations) {
