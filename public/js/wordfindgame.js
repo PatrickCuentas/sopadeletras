@@ -79,9 +79,11 @@
         }
       },
       f = function (t) {
-        var n = t.originalEvent.touches[0].pageX,
-          r = t.originalEvent.touches[0].pageY,
-          o = e.elementFromPoint(n, r);
+        var touch =
+          t.originalEvent.touches[0] || t.originalEvent.changedTouches[0];
+        var n = touch.clientX;
+        var r = touch.clientY;
+        var o = e.elementFromPoint(n, r);
         c(o);
       },
       v = function () {
