@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    const palabraContainer = $("#words");
+//   const palabraContainer = $("#words");
+  const palabras = ["INNOVACION","WIFISON","NAVEGACION","TECNOLOGIAS","AUTOMATIZAR","EFICIENCIA","INVESTIGACION Y DESARROLLO"];
   let fallos,
     aciertos,
     palabra_secreta,
@@ -30,6 +33,7 @@ $(document).ready(function () {
     const closeModal1 = $("#closeModal1");
     const closeModal2 = $("#closeModal2");
     const closeModal4 = $("#closeModal4");
+    
 
     closeModal1.on("click", function () {
       modal1.addClass("hidden");
@@ -62,6 +66,7 @@ $(document).ready(function () {
           numeroColaborador = numeroColaboradorInput.val();
           modal2.addClass("hidden");
           main();
+          insertarPalabra();
         }
       });
     });
@@ -98,9 +103,10 @@ $(document).ready(function () {
     letras_probadas = "";
     letras_fallidas = "";
 
+    $("#imagen_ahorcado").removeClass("hidden")
     $("#imagen_ahorcado").attr(
       "src",
-      "http://drive.google.com/uc?export=view&id=123XEU0tV-JavXxVmk3wV42ygeW3tku1D"
+      "img/fallo0.png"
     );
     $("#palabra").html("");
     $("#letras_fallidas").html("");
@@ -125,7 +131,6 @@ $(document).ready(function () {
   function cadenaPermitida(cadena) {
     let expresion = "";
 
-    cadena = cadena.toLowerCase();
     expresion = /^[a-zñ ]+$/;
 
     if (expresion.test(cadena)) {
@@ -136,7 +141,6 @@ $(document).ready(function () {
   }
 
   function verificarLetraProbada(letra) {
-    letra = letra.toLowerCase();
 
     if (letras_probadas.indexOf(letra) != -1) {
       return true;
@@ -146,8 +150,6 @@ $(document).ready(function () {
   }
 
   function verificarLetra(letra) {
-    letra = letra.toLowerCase();
-
     if (palabra_secreta.indexOf(letra) != -1) {
       return true;
     } else {
@@ -174,30 +176,34 @@ $(document).ready(function () {
   }
 
   function escribirSpan(indice, letra) {
-    // let lista_span = $("span");
-    let lista_span = $("span.espacio, span.letra");
+    let nuevoDiv = $("<div>").addClass("p-[6px] h-[30px] m-[3px] sm:p-3 sm:m-2 bg-[#fff] text-black rounded-md text-sm text-black text-center sm:text-2xl sm:h-auto");
+    nuevoDiv.text(`${letra}`);
+    const hijos = palabraContainer.children();
 
-    for (let i = 0; i < lista_span.length; i++) {
+    for (let i = 0; i < hijos.length; i++) {
+        console.log(i)
       if (i == indice) {
-        lista_span[i].innerHTML = letra;
+        hijos.eq(i).html(nuevoDiv.html());
       }
     }
   }
 
-  function mostrarPalabra(opcion) {
+  function mostrarPalabra() {
     let html = "";
+
+    let nuevoDiv = $("<div>").addClass("p-[6px] h-[30px] m-[3px] sm:p-3 sm:m-2 bg-[#fff] text-black rounded-md text-sm text-center sm:text-2xl sm:h-auto");
 
     for (let i = 0; i < palabra_secreta.length; i++) {
       if (palabra_secreta.charAt(i) == " ") {
-        html += `
-                  <span class='espacio'>${palabra_secreta.charAt(i)}</span>
-              `;
+        nuevoDiv.text(`${palabra_secreta.charAt(i)}`);
+        // html += `
+        //           <span class='espacio'>${palabra_secreta.charAt(i)}</span>
+        //       `;
       } else {
-        html += `
-                  <span class='letra letra-${opcion}'>${palabra_secreta.charAt(
-          i
-        )}</span>
-              `;
+        nuevoDiv.text(`${palabra_secreta.charAt(i)}`);
+        // html += `
+        //           <span class='letra letra-${opcion}'>${palabra_secreta.charAt(i)}</span>
+        //       `;
       }
     }
 
@@ -205,9 +211,6 @@ $(document).ready(function () {
   }
 
   function incluirLetra(letra) {
-    let numero_span = 0;
-
-    letra = letra.toLowerCase();
 
     for (let i = 0; i < palabra_secreta.length; i++) {
       if (palabra_secreta.charAt(i) == letra) {
@@ -223,89 +226,38 @@ $(document).ready(function () {
   }
 
   function incluirFallo(letra) {
-    let div_letras_fallidas = $("#letras_fallidas"),
-      html = div_letras_fallidas.html();
-
-    letra = letra.toLowerCase();
-
     fallos++;
 
-    letras_fallidas += letra;
     letras_probadas += letra;
 
-    if (fallos == 0) {
-      $("#imagen_ahorcado").attr(
-        "src",
-        "http://drive.google.com/uc?export=view&id=123XEU0tV-JavXxVmk3wV42ygeW3tku1D"
-      );
-    } else if (fallos == 1) {
-      $("#imagen_ahorcado").attr(
-        "src",
-        "http://drive.google.com/uc?export=view&id=1vFdlLQjzaq5_qHzPu88rZfolqFXR1zRb"
-      );
-    } else if (fallos == 2) {
-      $("#imagen_ahorcado").attr(
-        "src",
-        "http://drive.google.com/uc?export=view&id=1aexncQCP2hBh-7xaJvvL6YDKycmwaqWm"
-      );
-    } else if (fallos == 3) {
-      $("#imagen_ahorcado").attr(
-        "src",
-        "http://drive.google.com/uc?export=view&id=1hcwei7UOJLP1pzi38kA6LS1OOmkz5Nhw"
-      );
-    } else if (fallos == 4) {
-      $("#imagen_ahorcado").attr(
-        "src",
-        "http://drive.google.com/uc?export=view&id=18uD0wry0bfxGaq8Qiqg3BiordCNYuGV7"
-      );
-    }
+    $("#imagen_ahorcado").attr(
+    "src",
+    `/img/fallo${fallos}.png`
+    )
 
-    if (html == "") {
-      html = letra;
-    } else {
-      html += "-" + letra;
-    }
-
-    div_letras_fallidas.html(html);
-
-    if (fallos == 4) {
+    if (fallos == 7) {
       perdida();
     }
   }
 
   function gane() {
-    $("#probar_letra").attr("disabled", true);
-    $("#boton_probar").attr("disabled", true);
-
-    $("#adivinar").attr("disabled", true);
-    $("#boton_adivinar").attr("disabled", true);
+    const Juego = "Ahorcado";
+    const Colaborador = numeroColaborador;
+    const Tiempo = formatTime(tiempo);
+    const body = { Juego, Colaborador, Tiempo };
 
     $("#imagen_ahorcado").attr(
       "src",
       "http://drive.google.com/uc?export=view&id=1H1nrBllxQbpBf5SAGXlUJjagsYFYW-VS"
     );
-
-    const modal3 = document.getElementById("modal3");
-    const tiempoJuegoModal3 = document.getElementById("tiempo-juego");
-    const Juego = "Ahorcado";
-    const Colaborador = numeroColaborador;
-    const Tiempo = formatTime(tiempo);
-    const body = { Juego, Colaborador, Tiempo };
     makeRequest(body);
     stopTimer();
-    modal3.classList.toggle("hidden");
-    tiempoJuegoModal3.textContent = Tiempo;
-
+    $("#modal3").toggleClass("hidden");
+    $("#tiempo-juego").text(Tiempo);
     mostrarPalabra("gane");
   }
 
   function perdida() {
-    $("#probar_letra").attr("disabled", true);
-    $("#boton_probar").attr("disabled", true);
-
-    $("#adivinar").attr("disabled", true);
-    $("#boton_adivinar").attr("disabled", true);
-
     $("#imagen_ahorcado").attr(
       "src",
       "http://drive.google.com/uc?export=view&id=18uD0wry0bfxGaq8Qiqg3BiordCNYuGV7"
@@ -313,132 +265,18 @@ $(document).ready(function () {
     mostrarPalabra("perdida");
   }
 
-  function iniciar() {
-    let input_palabra_secreta = $("#palabra_secreta");
-
-    if (input_palabra_secreta.val().length > 0) {
-      if (cadenaPermitida(input_palabra_secreta.val())) {
-        palabra_secreta = input_palabra_secreta.val().toLowerCase();
-
-        input_palabra_secreta.attr("disabled", true);
-        input_palabra_secreta.attr("type", "password");
-        $("#boton_iniciar").attr("disabled", true);
-
-        $("#probar_letra").attr("disabled", false);
-        $("#boton_probar").attr("disabled", false);
-
-        $("#adivinar").attr("disabled", false);
-        $("#boton_adivinar").attr("disabled", false);
-
-        establecerEspacios();
-
-        $("#probar_letra").focus();
-      } else {
-        $("#etiqueta_mensaje").html("Datos Incorrectos");
-        $("#cuerpo_mensaje").html(
-          "La palabra debe contener caracteres de la A a la Z únicamente."
-        );
-        $("#mensaje").modal("show");
-
-        $("#mensaje").on("hidden.bs.modal", function () {
-          input_palabra_secreta.val("");
-          input_palabra_secreta.focus();
-        });
-      }
-    } else {
-      $("#etiqueta_mensaje").html("Datos Incorrectos");
-      $("#cuerpo_mensaje").html("Debe escribir la palabra secreta.");
-      $("#mensaje").modal("show");
-
-      $("#mensaje").on("hidden.bs.modal", function () {
-        input_palabra_secreta.focus();
-      });
-    }
+  function desabilitarLetra(ref)  {
+    $(ref).attr("disabled", true);
   }
 
-  function probarLetra() {
-    let input_probar_letra = $("#probar_letra");
-
-    if (input_probar_letra.val() != " ") {
-      if (input_probar_letra.val().length > 0) {
-        if (cadenaPermitida(input_probar_letra.val())) {
-          if (!verificarLetraProbada(input_probar_letra.val())) {
-            if (verificarLetra(input_probar_letra.val())) {
-              incluirLetra(input_probar_letra.val());
-            } else {
-              incluirFallo(input_probar_letra.val());
-            }
-
-            input_probar_letra.val("");
-            input_probar_letra.focus();
-          } else {
-            $("#etiqueta_mensaje").html("Datos Incorrectos");
-            $("#cuerpo_mensaje").html("La letra ya ha sido probada.");
-            $("#mensaje").modal("show");
-
-            $("#mensaje").on("hidden.bs.modal", function () {
-              input_probar_letra.val("");
-              input_probar_letra.focus();
-            });
-          }
-        } else {
-          $("#etiqueta_mensaje").html("Datos Incorrectos");
-          $("#cuerpo_mensaje").html(
-            "Sólo se permiten caracteres de la A a la Z únicamente."
-          );
-          $("#mensaje").modal("show");
-
-          $("#mensaje").on("hidden.bs.modal", function () {
-            input_probar_letra.val("");
-            input_probar_letra.focus();
-          });
-        }
-      } else {
-        $("#etiqueta_mensaje").html("Datos Incorrectos");
-        $("#cuerpo_mensaje").html("Debe escribir la letra a probar.");
-        $("#mensaje").modal("show");
-
-        $("#mensaje").on("hidden.bs.modal", function () {
-          input_palabra_secreta.focus();
-        });
-      }
+  function probarLetra(ref, letra) {
+    if (verificarLetra(letra)) {
+        incluirLetra(letra);
     } else {
-      input_probar_letra.val("");
-      input_probar_letra.focus();
+        incluirFallo(letra);
     }
-  }
 
-  function adivinar() {
-    let input_adivinar = $("#adivinar");
-
-    if (input_adivinar.val().length > 0) {
-      if (cadenaPermitida(input_adivinar.val())) {
-        if (input_adivinar.val().toLowerCase() == palabra_secreta) {
-          gane();
-        } else {
-          perdida();
-        }
-      } else {
-        $("#etiqueta_mensaje").html("Datos Incorrectos");
-        $("#cuerpo_mensaje").html(
-          "Sólo se permiten caracteres de la A a la Z únicamente."
-        );
-        $("#mensaje").modal("show");
-
-        $("#mensaje").on("hidden.bs.modal", function () {
-          input_adivinar.val("");
-          input_adivinar.focus();
-        });
-      }
-    } else {
-      $("#etiqueta_mensaje").html("Datos Incorrectos");
-      $("#cuerpo_mensaje").html("Debe escribir la palabra a adivinar.");
-      $("#mensaje").modal("show");
-
-      $("#mensaje").on("hidden.bs.modal", function () {
-        input_adivinar.focus();
-      });
-    }
+    desabilitarLetra(ref);
   }
 
   function finalizar() {
@@ -447,30 +285,52 @@ $(document).ready(function () {
 
   function main() {
     inicializar();
-    startTimer();
-    $("#boton_iniciar").click(iniciar);
-    $("#boton_probar").click(probarLetra);
-    $("#boton_finalizar").click(finalizar);
-    $("#boton_adivinar").click(adivinar);
-
-    $("#palabra_secreta").on("keydown", function (event) {
-      if (event.which == 13) {
-        iniciar();
-      }
+    // startTimer();
+    palabra_secreta = palabras[Math.floor(Math.random() * palabras.length)];
+    // Eventos para probar letra
+    $(".boton-probar").each(function() {
+      let letra = $(this).text().trim().toUpperCase();
+      $(document).keydown(function(event) {
+        if (event.key.toUpperCase() === letra) {
+          probarLetra($(this),letra);
+        }
+      });
+      $(this).click(function() {
+        probarLetra($(this),letra);
+      });
     });
 
-    $("#probar_letra").on("keydown", function (event) {
-      if (event.which == 13) {
-        probarLetra();
-      }
-    });
-
-    $("#adivinar").on("keydown", function (event) {
-      if (event.which == 13) {
-        adivinar();
-      }
-    });
   }
 
   handleInit();
+
+  /* FUNCION PALABRA RANDOM */
+    // function insertarPalabra(){
+    //     let palabraRandon = palabra_secreta.split("");
+    //     palabraContainer.innerHTML = "";
+    //     palabraRandon.forEach((letra) => {
+    //         let spanLetra = document.createElement("div");
+    //         spanLetra.className = "p-[6px] h-[30px] m-[3px] sm:p-3 sm:m-2 bg-[#fff] text-white rounded-md text-sm text-center sm:text-2xl sm:h-auto"; 
+    //         if(letra === " "){
+    //             spanLetra = document.createElement("br");
+    //             palabraContainer.className = "grid grid-cols-[repeat(13,minmax(0,1fr))] md:gap-2 ";
+    //         }   
+    //         spanLetra.innerHTML = letra;
+    //         palabraContainer.appendChild(spanLetra);
+    //     })
+    // }
+
+    function insertarPalabra(){
+      let palabraRandon = palabra_secreta.split("");
+      palabraContainer.html("");
+      $.each(palabraRandon, function(index, letra) {
+          let spanLetra = $("<div>").addClass("p-[6px] h-[30px] m-[3px] sm:p-3 sm:m-2 bg-[#fff] text-black rounded-md text-sm text-center sm:text-2xl sm:h-auto");
+          if(letra === " "){
+              spanLetra = $("<br>");
+              palabraContainer.addClass("grid grid-cols-[repeat(13,minmax(0,1fr))] md:gap-2");
+          }   
+          // spanLetra.html(letra);
+          palabraContainer.append(spanLetra);
+      });
+  }
 });

@@ -67,7 +67,8 @@ body {
 }
 
 .estilo-imagen {
-  height: 290px;
+  height: 18rem;
+  width: 100%;
 }
 
 .bg-morado {

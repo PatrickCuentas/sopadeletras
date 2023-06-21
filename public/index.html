@@ -66,7 +66,7 @@
 		<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
 		<div
-			class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+			class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto shadow-lg z-50 overflow-y-auto">
 			<!-- Header -->
 			<div class="bg-[#f7f7f7] p-8">
 				<h2 class="text-md md:text-lg lg:text-xl text-black">
@@ -148,38 +148,54 @@
 			¡Encuentra la palabra clave en el ahorcado!
 		</h4>
 	</div>
-	<div id="principal" class="container py-5 flex justify-around items-start">
+	<div id="principal" class="container py-5 flex justify-center ">
 		<section class="flex flex-col gap-3">
-
 			<div class="flex flex-col gap-4">
 				<div class="flex justify-center">
-					<img id="imagen_ahorcado" src="img/0_fallos.png" class="estilo-imagen" alt="Imagen juego ahorcado">
+					<img id="imagen_ahorcado" src="img/0_fallos.png" class="estilo-imagen hidden" alt="Imagen juego ahorcado">
 				</div>
-				<div id="palabra" class="contenedor-letras-secreto flex justify-center"></div>
-			</div>
-
-			<div class="container w-25 text-center ">
-				<h4 class="bg-sky-700 rounded-t-md p-2 font-bold text-white">
-					Letras Fallidas
-				</h4>
-				<div id="letras_fallidas" class="border-sky-700 border rounded-b-md rounded-bottom contenedor-letras">
-				</div>
+                <!-- Contenedor para las palabras a adivinar -->
+				<div id="words" class="contenedor-letras-secreto flex justify-center flex-wrap"></div>
+                <!--  -->
 			</div>
 
 
 			<div class="flex flex-col gap-2 items-center justify-center">
-				<div class="flex flex-col items-center">
-					<label class="text-white font-bold mb-2" for="palabra_secreta">Palabra:</label>
-					<div class="flex items-center">
-						<input id="palabra_secreta" type="text"
-							class="shadow border rounded-l-lg w-64 py-2 px-3 text-gray-800 focus:outline-none focus:shadow-outline"
-							placeholder="Escribe la palabra secreta y pulsa Iniciar"
-							aria-describedby="label_palabra_secreta">
-						<button id="boton_iniciar"
-							class="bg-gray-800 text-white border rounded-r-lg py-2 px-4 ml-2">Iniciar</button>
-					</div>
-				</div>
-				<div class="flex flex-col items-center">
+                <div class="my-5">
+                    <section id="key_row_1" class="flex gap-4 flex-wrap justify-center">
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">q</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">w</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">e</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">r</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">t</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">y</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">u</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">i</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">o</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">p</button>
+                    </section>
+                    <section id="key_row_2" class="flex gap-4 justify-center py-2 flex-wrap">
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">a</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">s</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">d</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">f</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">g</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">h</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">j</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">k</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">l</button>
+                    </section>
+                    <section id="key_row_3" class="flex gap-4 justify-center flex-wrap">
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">z</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">x</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">c</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">v</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">b</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">n</button>
+                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">m</button>
+                    </section>
+                </div>
+				<!-- <div class="flex flex-col items-center">
 					<label class="text-white font-bold mb-2" for="probar_letra">Letra:</label>
 					<div class="flex items-center">
 						<input id="probar_letra" type="text"
@@ -199,26 +215,22 @@
 						<button id="boton_adivinar" class="bg-gray-800 text-white border rounded-r-lg py-2 px-4 ml-2"
 							disabled>Adivinar</button>
 					</div>
-				</div>
-			</div>
-
-			<div class="w-full flex justify-center my-4">
-				<button id="boton_finalizar"
-					class="bg-gray-800 text-white w-[130px] border py-2 px-4 rounded centrar">Reiniciar</button>
+				</div> -->
 			</div>
 
 		</section>
-		<section>
+		<!-- <section>
 			<div id="timer"
 				class="bg-[#28b7b5] font-lato py-2 px-4 text-sm font-medium text-center text-white rounded-lg">
 				Tiempo: 0:0 min</div>
-		</section>
+		</section> -->
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
 		</script>
 	<script src="js/main.js"></script>
+	<script src="js/data.js"></script>
 </body>
 
 </html>
