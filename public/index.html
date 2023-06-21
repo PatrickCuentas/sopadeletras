@@ -1,201 +1,232 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Ahorcado</title>
-	<link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
-	<script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <body>
+    <!-- Modal1 -->
+    <div
+      id="modal1"
+      class="modal fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
 
-<body>
+      <div
+        class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7] p-4 flex justify-center">
+          <h2
+            class="text-md md:text-lg lg:text-2xl text-black text-center lg:max-w-[20ch]"
+          >
+            ¡Bienvenido a la actividad lúdica de Innovación Conectada!
+          </h2>
+        </div>
 
-	<!-- Modal1 -->
-	<div id="modal1" class="modal fixed inset-0 flex items-center justify-center z-50">
-		<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <!-- Body -->
+        <div class="bg-[#ffffff] p-4 border-y-2 border-[#cacaca]">
+          <p class="text-sm md:text-md lg:text-lg text-black">
+            Resuelve este juego de sopa de letra en el menor tiempo posible.
+          </p>
+          <h3
+            class="text-md md:text-lg lg:text-xl text-black text-lg font-bold"
+          >
+            Instrucciones:
+          </h3>
+          <ul class="list-disc px-4">
+            <li class="text-sm md:text-md lg:text-lg text-black">
+              Acierte la palabra secreta
+            </li>
+            <li class="text-sm md:text-md lg:text-lg text-black">
+              Teclea las letras que creas que faltan
+            </li>
+            <li class="text-sm md:text-md lg:text-lg text-black">
+              Oprime terminar para descubrir si acertaste
+            </li>
+          </ul>
 
-		<div
-			class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-			<!-- Header -->
-			<div class="bg-[#f7f7f7] p-4 flex justify-center">
-				<h2 class="text-md md:text-lg lg:text-2xl text-black text-center lg:max-w-[20ch]">
-					¡Bienvenido a la actividad lúdica de Innovación Conectada!
-				</h2>
-			</div>
+          <h3 class="mt-4 text-black text-md md:text-lg lg:text-xl font-bold">
+            ¡Éxito!
+          </h3>
+        </div>
 
-			<!-- Body -->
-			<div class="bg-[#ffffff] p-4 border-y-2 border-[#cacaca]">
-				<p class="text-sm md:text-md lg:text-lg text-black">
-					Resuelve este juego de sopa de letra en el menor tiempo posible.
-				</p>
-				<h3 class="text-md md:text-lg lg:text-xl text-black text-lg font-bold">
-					Instrucciones:
-				</h3>
-				<ul class="list-disc px-4">
-					<li class="text-sm md:text-md lg:text-lg text-black">
-						Acierte la palabra secreta
-					</li>
-					<li class="text-sm md:text-md lg:text-lg text-black">
-						Teclea las letras que creas que faltan
-					</li>
-					<li class="text-sm md:text-md lg:text-lg text-black">
-						Oprime terminar para descubrir si acertaste
-					</li>
-				</ul>
+        <!-- Footer -->
+        <div class="bg-[#f7f7f7] py-4 flex justify-center">
+          <button
+            id="closeModal1"
+            class="bg-[#28b7b5] text-white text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px]"
+          >
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal1 -->
 
-				<h3 class="mt-4 text-black text-md md:text-lg lg:text-xl font-bold">
-					¡Éxito!
-				</h3>
-			</div>
+    <!-- Modal2 -->
+    <div
+      id="modal2"
+      class="modal hidden fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
 
-			<!-- Footer -->
-			<div class="bg-[#f7f7f7] py-4 flex justify-center">
-				<button id="closeModal1"
-					class="bg-[#28b7b5] text-white text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px]">
-					Continuar
-				</button>
-			</div>
-		</div>
-	</div>
-	<!-- Fin Modal1 -->
+      <div
+        class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7] p-8">
+          <h2 class="text-md md:text-lg lg:text-xl text-black">
+            Ingresa tus datos
+          </h2>
+        </div>
 
-	<!-- Modal2 -->
-	<div id="modal2" class="modal hidden fixed inset-0 flex items-center justify-center z-50">
-		<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <!-- Body -->
+        <div class="bg-[#ffffff] p-8 border-y-2 border-[#cacaca]">
+          <form class="flex flex-col gap-2">
+            <label class="text-black text-sm md:text-md lg:text-lg"
+              ># de Colaborador</label
+            >
+            <input
+              type="number"
+              id="numeroColaborador"
+              class="border w-full rounded py-2 px-3 outline-none focus:ring focus:border-blue-300 placeholder-gray-400 text-gray-700 bg-white shadow-sm focus:shadow-outline-blue appearance-none"
+            />
+          </form>
+        </div>
 
-		<div
-			class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto shadow-lg z-50 overflow-y-auto">
-			<!-- Header -->
-			<div class="bg-[#f7f7f7] p-8">
-				<h2 class="text-md md:text-lg lg:text-xl text-black">
-					Ingresa tus datos
-				</h2>
-			</div>
+        <!-- Footer -->
+        <div class="bg-[#f7f7f7] py-4 flex justify-center">
+          <button
+            id="closeModal2"
+            class="bg-[#d41073] text-white text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]"
+          >
+            Ingresar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal2 -->
 
-			<!-- Body -->
-			<div class="bg-[#ffffff] p-8 border-y-2 border-[#cacaca]">
-				<form class="flex flex-col gap-2">
-					<label class="text-black text-sm md:text-md lg:text-lg"># de Colaborador</label>
-					<input type="number" id="numeroColaborador"
-						class="border w-full rounded py-2 px-3 outline-none focus:ring focus:border-blue-300 placeholder-gray-400 text-gray-700 bg-white shadow-sm focus:shadow-outline-blue appearance-none" />
-				</form>
-			</div>
+    <!-- Modal3 -->
+    <div
+      class="modal hidden fixed inset-0 flex items-center justify-center z-50"
+      id="modal3"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
 
-			<!-- Footer -->
-			<div class="bg-[#f7f7f7] py-4 flex justify-center">
-				<button id="closeModal2"
-					class="bg-[#d41073] text-white text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]">
-					Ingresar
-				</button>
-			</div>
-		</div>
-	</div>
-	<!-- Fin Modal2 -->
+      <div
+        class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7] p-8">
+          <h2 class="text-md md:text-lg lg:text-xl text-black">
+            ¡Felicidades!
+          </h2>
+        </div>
 
-	<!-- Modal3 -->
-	<div class="modal hidden fixed inset-0 flex items-center justify-center z-50" id="modal3">
-		<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <!-- Body -->
+        <div class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]">
+          <p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal3 -->
 
-		<div
-			class="modal-container rounded-[5px] bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-			<!-- Header -->
-			<div class="bg-[#f7f7f7] p-8">
-				<h2 class="text-md md:text-lg lg:text-xl text-black">
-					¡Felicidades!
-				</h2>
-			</div>
+    <!-- Modal4 -->
+    <div
+      class="modal hidden fixed inset-0 flex items-center justify-center z-50"
+      id="modal4"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
 
-			<!-- Body -->
-			<div class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]">
-				<p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p>
-			</div>
-		</div>
-	</div>
-	<!-- Fin Modal3 -->
+      <div
+        class="modal-container rounded-[5px] bg-white w-6/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <!-- Header -->
+        <div class="bg-[#f7f7f7]text-black p-8 border-y-2 border-[#cacaca]">
+          <h2
+            class="text-md md:text-lg lg:text-xl text-black"
+            id="titulo-modal4"
+          ></h2>
+        </div>
 
-	<!-- Modal4 -->
-	<div class="modal hidden fixed inset-0 flex items-center justify-center z-50" id="modal4">
-		<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <!-- Footer -->
+        <div class="bg-[#f7f7f7] py-4 flex justify-center">
+          <button
+            id="closeModal4"
+            class="bg-[#d41073] text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal4 -->
 
-		<div
-			class="modal-container rounded-[5px] bg-white w-6/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-			<!-- Header -->
-			<div class="bg-[#f7f7f7]text-black p-8 border-y-2 border-[#cacaca]">
-				<h2 class="text-md md:text-lg lg:text-xl text-black" id="titulo-modal4"></h2>
-			</div>
+    <!-- Estructura del juego-->
+    <div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4">
+      <div
+        class="flex md:flex-row justify-center items-center px-4 md:px-0 gap-6 md:gap-10 lg:gap-16"
+      >
+        <img src="../img/IZZI.webp" alt="" class="w-[33%] lg:w-full" />
+        <img src="../img/Inizziativa.webp" alt="" class="w-[33%] lg:w-full" />
+        <img src="../img/Logo IC Ok.png" alt="" class="w-[33%] lg:w-full" />
+      </div>
+      <h4
+        class="text-md text-white md:text-xl lg:text-2xl text-center font-bold my-5 md:my-10 px-4 md:px-0"
+      >
+        ¡Encuentra la palabra clave en el ahorcado!
+      </h4>
+    </div>
+    <div
+      id="principal"
+      class="pb-5 px-5 flex flex-col justify-center items-center"
+    >
+      <section>
+        <div
+          id="timer"
+          class="bg-[#28b7b5] font-lato py-2 px-4 text-sm font-medium text-center text-white rounded-lg"
+        >
+          Tiempo: 0:0 min
+        </div>
+      </section>
+      <section class="flex flex-col gap-3">
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-center">
+            <img
+              id="imagen_ahorcado"
+              src="img/0_fallos.png"
+              class="estilo-imagen hidden min-w-full h-[250px] sm:h-[350px] md:h-[450px]"
+              alt="Imagen juego ahorcado"
+            />
+          </div>
+          <!-- Contenedor para las palabras a adivinar -->
+          <div
+            id="words"
+            class="contenedor-letras-secreto flex justify-center flex-wrap"
+          ></div>
+          <!--  -->
+        </div>
 
-			<!-- Footer -->
-			<div class="bg-[#f7f7f7] py-4 flex justify-center">
-				<button id="closeModal4"
-					class="bg-[#d41073] text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]">
-					OK
-				</button>
-			</div>
-		</div>
-	</div>
-	<!-- Fin Modal4 -->
+        <div id="keyboard"></div>
+      </section>
+    </div>
 
-	<!-- Estructura del juego-->
-	<div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4 md:pb-6">
-		<div class="flex md:flex-row justify-center items-center px-4 md:px-0 gap-6 md:gap-10 lg:gap-16">
-			<img src="../img/IZZI.webp" alt="" class="w-[33%] lg:w-full" />
-			<img src="../img/Inizziativa.webp" alt="" class="w-[33%] lg:w-full" />
-			<img src="../img/Logo IC Ok.png" alt="" class="w-[33%] lg:w-full" />
-		</div>
-		<h4 class="text-md text-white md:text-xl lg:text-2xl text-center font-bold my-5 md:my-10 px-4 md:px-0">
-			¡Encuentra la palabra clave en el ahorcado!
-		</h4>
-	</div>
-	<div id="principal" class="container py-5 flex justify-center ">
-		<section class="flex flex-col gap-3">
-			<div class="flex flex-col gap-4">
-				<div class="flex justify-center">
-					<img id="imagen_ahorcado" src="img/0_fallos.png" class="estilo-imagen hidden" alt="Imagen juego ahorcado">
-				</div>
-                <!-- Contenedor para las palabras a adivinar -->
-				<div id="words" class="contenedor-letras-secreto flex justify-center flex-wrap"></div>
-                <!--  -->
-			</div>
-
-
-			<div class="flex flex-col gap-2 items-center justify-center">
-                <div class="my-5">
-                    <section id="key_row_1" class="flex gap-4 flex-wrap justify-center">
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">q</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">w</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">e</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">r</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">t</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">y</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">u</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">i</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">o</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">p</button>
-                    </section>
-                    <section id="key_row_2" class="flex gap-4 justify-center py-2 flex-wrap">
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">a</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">s</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">d</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">f</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">g</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">h</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">j</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">k</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">l</button>
-                    </section>
-                    <section id="key_row_3" class="flex gap-4 justify-center flex-wrap">
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">z</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">x</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">c</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">v</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">b</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">n</button>
-                        <button class="boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer">m</button>
-                    </section>
-                </div>
-				<!-- <div class="flex flex-col items-center">
+    <!-- <div class="flex flex-col items-center">
 					<label class="text-white font-bold mb-2" for="probar_letra">Letra:</label>
 					<div class="flex items-center">
 						<input id="probar_letra" type="text"
@@ -216,21 +247,13 @@
 							disabled>Adivinar</button>
 					</div>
 				</div> -->
-			</div>
 
-		</section>
-		<!-- <section>
-			<div id="timer"
-				class="bg-[#28b7b5] font-lato py-2 px-4 text-sm font-medium text-center text-white rounded-lg">
-				Tiempo: 0:0 min</div>
-		</section> -->
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-		</script>
-	<script src="js/main.js"></script>
-	<script src="js/data.js"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+  </body>
 </html>

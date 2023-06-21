@@ -3,7 +3,7 @@ body {
   color: #000;
   overflow-x: hidden;
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -11,15 +11,13 @@ body {
 }
 
 /* nuevas clases */
-.text{
+.text {
   text-align: start !important  ;
 }
-.animate{
+.animate {
   transition: all 0.5s ease;
-
 }
 /* --------------- */
-
 
 .ancho-etiqueta {
   width: 100px;
@@ -50,26 +48,26 @@ body {
   text-align: center;
   margin-left: 2.5px;
   margin-right: 2.5px;
-  font-size: 25px;    
+  font-size: 25px;
 }
 
 .espacio {
-  display: inline-block;    
-  width: 30px;    
+  display: inline-block;
+  width: 30px;
 }
 
 .letra-gane {
-  background: #27a745;    
+  background: #27a745;
 }
 
 .letra-perdida {
   background: #dc3645;
 }
 
-.estilo-imagen {
+/* .estilo-imagen {
   height: 18rem;
   width: 100%;
-}
+} */
 
 .bg-morado {
   background: #612daf;
