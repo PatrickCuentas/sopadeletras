@@ -53,10 +53,11 @@ $(document).ready(function () {
   };
 
   function inicializar() {
+    $("button").prop("disabled", false);
     palabra_secreta = palabras[Math.floor(Math.random() * palabras.length)];
 
     $("#imagen_ahorcado").removeClass("hidden");
-    $("#imagen_ahorcado").attr("src", `img/fallo0.png`);
+    $("#imagen_ahorcado").attr("src", `img/stick_game/fallo0.png`).addClass("sm:w-1/2");
     insertarPalabra();
     generarTeclado();
     asignarEventosTeclado();
@@ -137,6 +138,17 @@ $(document).ready(function () {
     });
   }
 
+  function countLetter(word, letter) {
+    let count = 0;
+    for(let i in word){
+      if(word[i] === letter){
+          count++;
+      }
+    }
+    return count;
+  }
+
+
   function insertarPistaPalabraSecreta() {
     // 1. Obtener las "letras" de la "palabra_secreta" en base a la cantidad
     const posiciones = new Set();
@@ -148,6 +160,15 @@ $(document).ready(function () {
     // 2. Insertar las letras en el contenedor de la palabra oculta
     for (let i = 0; i < palabra_secreta.length; i++) {
       if (posiciones.has(i)) {
+        if(countLetter(palabra_secreta, palabra_secreta.charAt(i)) === 1){
+          $(".boton-probar").each(function () {
+            let letra = $(this).text().trim().toUpperCase();
+            if (letra === palabra_secreta.charAt(i)) {
+              aciertos++;
+              $(this).attr("disabled", true);
+            }
+          });
+        }
         escribirSpan(i, palabra_secreta.charAt(i));
       }
     }
@@ -167,27 +188,6 @@ $(document).ready(function () {
     }
   }
 
-  function mostrarPalabra() {
-    // let html = "";
-    let nuevoDiv = $("<div>").addClass(baseButtonStyles);
-
-    for (let i = 0; i < palabra_secreta.length; i++) {
-      if (palabra_secreta.charAt(i) == " ") {
-        nuevoDiv.text(`${palabra_secreta.charAt(i)}`);
-        // html += `
-        //           <span class='espacio'>${palabra_secreta.charAt(i)}</span>
-        //       `;
-      } else {
-        nuevoDiv.text(`${palabra_secreta.charAt(i)}`);
-        // html += `
-        //           <span class='letra letra-${opcion}'>${palabra_secreta.charAt(i)}</span>
-        //       `;
-      }
-    }
-
-    $("#palabra").html(html);
-  }
-
   function incluirLetra(letra) {
     for (let i = 0; i < palabra_secreta.length; i++) {
       if (palabra_secreta.charAt(i) == letra) {
@@ -196,9 +196,10 @@ $(document).ready(function () {
         letras_probadas += letra;
       }
     }
+  
+    let sinEspacios = palabra_secreta.replace(new RegExp(" ", "g"), "")
 
-    // palabra_secreta.replace(new RegExp(" ", "g"), "").length - cantidad_pistas
-    if (aciertos == palabra_secreta.length - cantidad_pistas) {
+    if (aciertos == sinEspacios.length ) {
       gane();
     }
   }
@@ -208,7 +209,7 @@ $(document).ready(function () {
 
     letras_probadas += letra;
 
-    $("#imagen_ahorcado").attr("src", `/img/fallo${fallos}.png`);
+    $("#imagen_ahorcado").attr("src", `/img/stick_game/fallo${fallos}.png`);
 
     if (fallos == 7) {
       perdida();
@@ -221,23 +222,27 @@ $(document).ready(function () {
     const Tiempo = formatTime(time);
     const body = { Juego, Colaborador, time };
 
-    $("#imagen_ahorcado").attr(
-      "src",
-      "http://drive.google.com/uc?export=view&id=1H1nrBllxQbpBf5SAGXlUJjagsYFYW-VS"
-    );
+    // $("#imagen_ahorcado").attr(
+    //   "src",
+    //   "http://drive.google.com/uc?export=view&id=1H1nrBllxQbpBf5SAGXlUJjagsYFYW-VS"
+    // );
     makeRequest(body);
     stopTimer();
     $("#modal3").toggleClass("hidden");
+    $('#title').text('¡Felicidades!')
+    $('#content').html('<p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p>')
     $("#tiempo-juego").text(Tiempo);
-    // mostrarPalabra("gane");
   }
 
   function perdida() {
-    $("#imagen_ahorcado").attr(
-      "src",
-      "http://drive.google.com/uc?export=view&id=18uD0wry0bfxGaq8Qiqg3BiordCNYuGV7"
-    );
-    mostrarPalabra("perdida");
+    stopTimer();
+    $("#modal3").toggleClass("hidden");
+    $('#title').text('¡Fallaste!')
+    $('#content').html('<p>Tienes una oportunidad más para encontrar la frase.</p><button id="btn-reintentar" class="btn btn-primary">Reintentar</button>')
+    $("#btn-reintentar").on("click", function () {
+      inicializarJuego();
+    });
+    $("#tiempo-juego").text(Tiempo);
   }
 
   function desabilitarLetra(ref) {
@@ -264,14 +269,14 @@ $(document).ready(function () {
     // Loop through each row of the keyboard
     for (let row of keyboard) {
       // Create a new row element
-      let $row = $("<section>").addClass("flex gap-4 justify-center flex-wrap");
+      let $row = $("<section>").addClass("flex gap-2 justify-start sm:justify-center flex-wrap my-1 sm:my-2 w-full sm:gap-4 ");
 
       // Loop through each key in the row
       for (let key of row) {
         // Create a new button element
         let $button = $("<button>")
           .addClass(
-            "boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer disabled:bg-gray-500 disabled:text-white disabled:cursor-not-allowed"
+            "boton-probar p-4 bg-[#fff] text-center font-bold rounded-md text-gray-600 cursor-pointer disabled:bg-gray-500 disabled:text-white disabled:cursor-not-allowed text-[15px]"
           )
           .text(key);
 
@@ -287,13 +292,14 @@ $(document).ready(function () {
   function asignarEventosTeclado() {
     $(".boton-probar").each(function () {
       let letra = $(this).text().trim().toUpperCase();
-      $(document).keydown(function (event) {
-        if (event.key.toUpperCase() === letra) {
-          probarLetra($(this), letra);
-        }
-      });
+      // $(document).keydown(function (event) {
+      //   if (event.key.toUpperCase() === letra) {
+      //     probarLetra($(this), letra);
+      //   }
+      // });
       $(this).click(function () {
         probarLetra($(this), letra);
+        console.log("Aciertos: ", aciertos)
       });
     });
   }
@@ -305,3 +311,17 @@ $(document).ready(function () {
 
   main();
 });
+
+/* 
+  !!cambios realizados
+
+ *- cambio de la ruta de imagen nueva
+ *- cambio en la condicion de ganar (por considerar)
+ *- la imagen de fallo es la imagen del muñeco completo
+ *- se mejoró los estilos del keyword*- ahora cuando se pierde se deshabilitan los botones
+
+
+ ?? TODO
+  *- imagen de ganar o perder
+*/
+

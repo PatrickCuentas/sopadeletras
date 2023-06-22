@@ -131,14 +131,14 @@
       >
         <!-- Header -->
         <div class="bg-[#f7f7f7] p-8">
-          <h2 class="text-md md:text-lg lg:text-xl text-black">
-            ¡Felicidades!
+          <h2 id="title" class="text-md md:text-lg lg:text-xl text-black">
+            <!-- ¡Felicidades! -->
           </h2>
         </div>
 
         <!-- Body -->
-        <div class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]">
-          <p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p>
+        <div id="content" class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]">
+          <!-- <p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p> -->
         </div>
       </div>
     </div>
@@ -180,7 +180,7 @@
     <!-- Estructura del juego-->
     <div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4">
       <div
-        class="flex md:flex-row justify-center items-center px-4 md:px-0 gap-6 md:gap-10 lg:gap-16"
+        class="flex md:flex-row justify-center items-center px-4 md:px-0 gap-4 md:gap-10 lg:gap-16 py-2"
       >
         <img src="../img/IZZI.webp" alt="" class="w-[33%] lg:w-full" />
         <img src="../img/Inizziativa.webp" alt="" class="w-[33%] lg:w-full" />
@@ -209,7 +209,7 @@
           <div class="flex justify-center">
             <img
               id="imagen_ahorcado"
-              src="img/0_fallos.png"
+              src="img/stick_game/fallo0.png"
               class="estilo-imagen hidden min-w-full h-[250px] sm:h-[350px] md:h-[450px]"
               alt="Imagen juego ahorcado"
             />
@@ -217,7 +217,7 @@
           <!-- Contenedor para las palabras a adivinar -->
           <div
             id="words"
-            class="contenedor-letras-secreto flex justify-center flex-wrap"
+            class="contenedor-letras-secreto flex justify-center flex-wrap sm:my-3"
           ></div>
           <!--  -->
         </div>
