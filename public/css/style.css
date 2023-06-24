@@ -1,5 +1,6 @@
 body {
-  background-color: #d41073 !important;
+  font-family: "Lato", sans-serif;
+  background-color: #d41073;
   color: #000;
   overflow-x: hidden;
   display: flex;
@@ -8,6 +9,21 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+.cronometro {
+  font-family: "Lato", sans-serif;
+  display: inline-grid;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background: #00b1ad;
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
 /* nuevas clases */
@@ -28,10 +44,6 @@ body {
 
 .contenedor-letras {
   min-height: 30px;
-}
-
-.contenedor-letras-secreto {
-  min-height: 45px;
 }
 
 .titulo-principal {
@@ -63,11 +75,6 @@ body {
 .letra-perdida {
   background: #dc3645;
 }
-
-/* .estilo-imagen {
-  height: 18rem;
-  width: 100%;
-} */
 
 .bg-morado {
   background: #612daf;

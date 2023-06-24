@@ -25,7 +25,7 @@
         <!-- Header -->
         <div class="bg-[#f7f7f7] p-4 flex justify-center">
           <h2
-            class="text-md md:text-lg lg:text-2xl text-black text-center lg:max-w-[20ch]"
+            class="text-md md:text-lg lg:text-2xl text-black font-bold text-center lg:max-w-[20ch]"
           >
             ¡Bienvenido a la actividad lúdica de Innovación Conectada!
           </h2>
@@ -34,7 +34,7 @@
         <!-- Body -->
         <div class="bg-[#ffffff] p-4 border-y-2 border-[#cacaca]">
           <p class="text-sm md:text-md lg:text-lg text-black">
-            Resuelve este juego de sopa de letra en el menor tiempo posible.
+            Resuelve este juego del ahorcado en el menor tiempo posible.
           </p>
           <h3
             class="text-md md:text-lg lg:text-xl text-black text-lg font-bold"
@@ -43,13 +43,10 @@
           </h3>
           <ul class="list-disc px-4">
             <li class="text-sm md:text-md lg:text-lg text-black">
-              Acierte la palabra secreta
+              Adivina las letras que faltan
             </li>
             <li class="text-sm md:text-md lg:text-lg text-black">
-              Teclea las letras que creas que faltan
-            </li>
-            <li class="text-sm md:text-md lg:text-lg text-black">
-              Oprime terminar para descubrir si acertaste
+              Acierta la palabra secreta
             </li>
           </ul>
 
@@ -131,15 +128,14 @@
       >
         <!-- Header -->
         <div class="bg-[#f7f7f7] p-8">
-          <h2 id="title" class="text-md md:text-lg lg:text-xl text-black">
-            <!-- ¡Felicidades! -->
-          </h2>
+          <h2 id="title" class="text-md md:text-lg lg:text-xl text-black"></h2>
         </div>
 
         <!-- Body -->
-        <div id="content" class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]">
-          <!-- <p>Has resuelto el juego en <span id="tiempo-juego"></span>.</p> -->
-        </div>
+        <div
+          id="content"
+          class="bg-[#ffffff] text-black p-8 border-t-2 border-[#cacaca]"
+        ></div>
       </div>
     </div>
     <!-- Fin Modal3 -->
@@ -168,7 +164,7 @@
         <div class="bg-[#f7f7f7] py-4 flex justify-center">
           <button
             id="closeModal4"
-            class="bg-[#d41073] text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]"
+            class="bg-[#d41073] text-white text-md md:text-lg lg:text-xl p-2 md:p-3 rounded-[12px] min-w-[150px]"
           >
             OK
           </button>
@@ -178,7 +174,7 @@
     <!-- Fin Modal4 -->
 
     <!-- Estructura del juego-->
-    <div class="flex flex-col flex-wrap pt-6 md:pt-12 pb-4">
+    <div class="flex flex-col flex-wrap pb-4">
       <div
         class="flex md:flex-row justify-center items-center px-4 md:px-0 gap-4 md:gap-10 lg:gap-16 py-2"
       >
@@ -187,9 +183,9 @@
         <img src="../img/Logo IC Ok.png" alt="" class="w-[33%] lg:w-full" />
       </div>
       <h4
-        class="text-md text-white md:text-xl lg:text-2xl text-center font-bold my-5 md:my-10 px-4 md:px-0"
+        class="text-md text-white md:text-xl lg:text-2xl text-center font-bold my-5 px-4 md:px-0"
       >
-        ¡Encuentra la palabra clave en el ahorcado!
+        ¡Encuentra la palabra secreta en el ahorcado!
       </h4>
     </div>
     <div
@@ -197,12 +193,7 @@
       class="pb-5 px-5 flex flex-col justify-center items-center"
     >
       <section>
-        <div
-          id="timer"
-          class="bg-[#28b7b5] font-lato py-2 px-4 text-sm font-medium text-center text-white rounded-lg"
-        >
-          Tiempo: 0:0 min
-        </div>
+        <div id="timer" class="cronometro">Tiempo: 0:0 min</div>
       </section>
       <section class="flex flex-col gap-3">
         <div class="flex flex-col gap-4">
@@ -210,14 +201,14 @@
             <img
               id="imagen_ahorcado"
               src="img/stick_game/fallo0.png"
-              class="estilo-imagen hidden min-w-full h-[250px] sm:h-[350px] md:h-[450px]"
+              class="h-[270px] md:h-[320px] relative bottom-[30px]"
               alt="Imagen juego ahorcado"
             />
           </div>
           <!-- Contenedor para las palabras a adivinar -->
           <div
             id="words"
-            class="contenedor-letras-secreto flex justify-center flex-wrap sm:my-3"
+            class="flex justify-center flex-wrap gap-[.5rem] my-3"
           ></div>
           <!--  -->
         </div>
@@ -225,28 +216,6 @@
         <div id="keyboard"></div>
       </section>
     </div>
-
-    <!-- <div class="flex flex-col items-center">
-					<label class="text-white font-bold mb-2" for="probar_letra">Letra:</label>
-					<div class="flex items-center">
-						<input id="probar_letra" type="text"
-							class="shadow border rounded-l-lg w-16 py-2 px-3 text-gray-800 focus:outline-none focus:shadow-outline"
-							placeholder="A" aria-describedby="label_probar_letra" maxlength="1" minlength="1" disabled>
-						<button id="boton_probar" class="bg-gray-800 text-white border rounded-r-lg py-2 px-4 ml-2"
-							disabled>Probar</button>
-					</div>
-				</div>
-				<div class="flex flex-col items-center">
-					<label class="text-white font-bold mb-2" for="adivinar">¿Ya sabes?</label>
-					<div class="flex items-center">
-						<input id="adivinar" type="text"
-							class="shadow border rounded-l-lg w-64 py-2 px-3 text-gray-800 focus:outline-none focus:shadow-outline"
-							placeholder="Escribe la palabra que crees que es" aria-describedby="label_adivinar"
-							disabled>
-						<button id="boton_adivinar" class="bg-gray-800 text-white border rounded-r-lg py-2 px-4 ml-2"
-							disabled>Adivinar</button>
-					</div>
-				</div> -->
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
